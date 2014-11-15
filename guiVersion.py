@@ -1,5 +1,5 @@
 import socket, select, string, sys, thread
-import hashlib, getpass
+import hashlib, getpass, datetime
 try:
     from Tkinter import *  
 except:
@@ -8,6 +8,12 @@ import bz2, base64
 from Crypto.Cipher import AES
 ########## somethings wrong when the message number of characters!!!
 MASTER_KEY=hashlib.sha256("Some-long-base-key-to-use-as-encyrption-key").digest()
+#Monkey Patch Print Statement
+old_f = sys.stdout
+class F:
+    def write(self, x):
+        old_f.write(x.replace("\n", " [%s]\n" % str(datetime.datetime.now())))
+sys.stdout = F()
 
 def zip_and_encrypt_val(clear_text, key):
     # clear_text = bz2.compress(clear_text)
@@ -125,6 +131,7 @@ class ChatClientGUI(Frame):
             except socket.timeout:
                 pass
             except TypeError: # Text is not encrypted
+                print "Done: Text Not Encrypted"
                 self.result_text.insert("end",data)
             # except ValueError: # Text is not encrypted
             #     print "Error on the decompression of cipher text"
