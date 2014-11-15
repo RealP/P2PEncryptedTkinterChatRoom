@@ -8,7 +8,7 @@ POSSIBLE_COMMANDS = ["join","bye","crea","subs","unsu","defa","lscr","lssu","rea
 #at home
 HOST = '0.0.0.0'
 #ON CWolf
-# HOST = '130.157.166.29' 
+# HOST = '29' 
 SOCKET_LIST = []
 RECV_BUFFER = 4096 
 PORT = 8022
