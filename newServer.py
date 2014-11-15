@@ -2,7 +2,7 @@
 import sys
 import socket
 import select
-import thread, re
+import thread, re, datetime
 
 POSSIBLE_COMMANDS = ["join","bye","crea","subs","unsu","defa","lscr","lssu","read","writ","chmod"]
 #at home
@@ -13,10 +13,12 @@ SOCKET_LIST = []
 RECV_BUFFER = 4096 
 PORT = 8022
 
-class Client:
-    name = ''
-    socket = None
-    addr = None
+#Monkey Patch Print Statement
+old_f = sys.stdout
+class F:
+    def write(self, x):
+        old_f.write(x.replace("\n", " [%s]\n" % str(datetime.datetime.now())))
+sys.stdout = F()
 
 def processClientCommands(cmd, clientSocket):
     if "crea:" in cmd:
@@ -33,6 +35,13 @@ def clientMessage(clientSoc, clientAddr, serverSocket):
             data = clientSoc.recv(4096)
             if not data:
                 break
+            ### SEARCH FOR ONE OF THE POSSIBLE COMMANDS FROM THE USER. 
+            ### AND PROCESS IT AS APPROPRIATE
+            for cmd in POSSIBLE_COMMANDS:
+                m = re.search(cmd+":.*;", data)
+                if m:
+                    processClientCommands(data, clientSoc)
+                    break
             broadcast(serverSocket, clientSoc, data)  
         except socket.timeout:
             break
@@ -41,13 +50,7 @@ def clientMessage(clientSoc, clientAddr, serverSocket):
     
 # broadcast chat messages to all connected clients
 def broadcast (server_socket, sock, message):
-    ### SEARCH FOR ONE OF THE POSSIBLE COMMANDS FROM THE USER. 
-    ### AND PROCESS IT AS APPROPRIATE
-    for cmd in POSSIBLE_COMMANDS:
-        m = re.search(cmd+":.*", message)
-        if m:
-            processClientCommands(message, sock)
-            return
+    print "Called broadcast"
     for socket in SOCKET_LIST:
         # send the message only to peers not server or self
         if socket != server_socket and socket != sock :
@@ -72,7 +75,8 @@ def chat_server(host, port):
         sockfd, addr = server_socket.accept()
         SOCKET_LIST.append(sockfd)
         print "Client (%s, %s) connected to main chat room" % addr
-        broadcast(server_socket, sockfd, "[%s:%s] entered main chat room\n" % addr)
+        sockfd.send("[%s:%s] entered main chat room\n" % addr)
+        # broadcast(server_socket, sockfd, "[%s:%s] entered main chat room\n" % addr)
         thread.start_new_thread(clientMessage, (sockfd, addr, server_socket))
     server_socket.close()
 

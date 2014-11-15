@@ -1,5 +1,5 @@
 import socket, select, string, sys, thread
-import hashlib
+import hashlib, getpass
 try:
     from Tkinter import *  
 except:
@@ -7,7 +7,7 @@ except:
 import bz2, base64
 from Crypto.Cipher import AES
 ########## somethings wrong when the message number of characters!!!
-MASTER_KEY="Some-long-base-key-to-use-as-encyrption-key"
+MASTER_KEY=hashlib.sha256("Some-long-base-key-to-use-as-encyrption-key").digest()
 
 def zip_and_encrypt_val(clear_text, key):
     # clear_text = bz2.compress(clear_text)
@@ -128,7 +128,6 @@ class ChatClientGUI(Frame):
                 self.result_text.insert("end",data)
             # except ValueError: # Text is not encrypted
             #     print "Error on the decompression of cipher text"
-                self.result_text.insert("end",data)
             self.result_text.configure(state=DISABLED)
         print "Disconnected from server"
 
@@ -139,7 +138,7 @@ class ChatClientGUI(Frame):
             message = self.msg.get()
             if (len(message) % 2 != 0):
                 message += "~" 
-            message = zip_and_encrypt_val("["+ str(self.clientSocket.getpeername()) + "] " + message + "\n", self.key)
+            message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
         else:
             message = self.msg.get() + "\n"
         self.clientSocket.send(message)
