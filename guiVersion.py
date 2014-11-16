@@ -23,10 +23,11 @@ def zip_and_encrypt_val(clear_text, key):
                    len(str(clear_text)) % AES.block_size) * "\0")
     cipher_text = base64.b64encode(enc_secret.encrypt(tag_string))
     return cipher_text
+
 def decrypt_val_and_unzip(cipher_text, key):
     print "Staring decryption"
     dec_secret = AES.new(key[:32])
-    # cipher_text += "=" * ((4 - len(cipher_text) % 4) % 4)
+    cipher_text += "=" * ((4 - len(cipher_text) % 4) % 4)
     raw_decrypted = dec_secret.decrypt(base64.b64decode(cipher_text))
     clear_val = raw_decrypted.rstrip("\0")
     # clear_val = bz2.decompress(clear_val)
@@ -46,6 +47,7 @@ class ChatClientGUI(Frame):
         self.frame.configure(background="gray")
         self.grid()
         self.key = MASTER_KEY
+        self.broadcastmode=1
         self.chatRoomWindowInit()
         self.chatRoomTextBoxInit()
         self.sendButtonInit()
@@ -82,9 +84,13 @@ class ChatClientGUI(Frame):
         self.setKeyButton.grid(row=3, column=0, sticky=E)
 
     def setKey(self, secretKey):
+        if (secretKey.get() == "broadcast"):
+            self.broadcastmode = 1
+        else:
+            self.broadcastmode = 0
         self.key=hashlib.sha256(secretKey.get()).digest()
         self.encryptionKeyBox.delete(0, END)
-        print self.key
+        print self.broadcastmode
 
     def connectToServer(self):
         if(len(sys.argv) < 3) :
@@ -112,29 +118,41 @@ class ChatClientGUI(Frame):
               if not data:
                   break
               self.result_text.configure(state=NORMAL)
-              print "compressed cipher text = ", data
-              data = decrypt_val_and_unzip(data, self.key)
-              print "uncompressed cipher text = ", data
+              if self.broadcastmode == 0:
+                  print "compressed cipher text = ", data
+                  data = decrypt_val_and_unzip(data, self.key)
+                  print "uncompressed cipher text = ", data
               try:
                   data.decode('ascii')
               except UnicodeDecodeError:
-                  print "it was not a ascii-encoded unicode string"
+                  # print "it was not a ascii-encoded unicode string"
                   pass
               else:
                   print "It may have been an ascii-encoded unicode string"
                   if (data.rstrip()[-1] == "~"):
-                    print "Got padding msg"
                     data = data.rstrip()[:-1] + "\r"
                   self.result_text.insert("end",data)
+                  self.result_text.yview(END)
+
             except KeyboardInterrupt:
                 break     
             except socket.timeout:
                 pass
             except TypeError: # Text is not encrypted
                 print "Done: Text Not Encrypted"
+                if (data.rstrip()[-1] == "~"):
+                    data = data.rstrip()[:-1] + "\r"
                 self.result_text.insert("end",data)
-            # except ValueError: # Text is not encrypted
-            #     print "Error on the decompression of cipher text"
+                self.result_text.yview(END)
+
+            except ValueError: # Text is not encrypted
+                print "Error on the decipghering of text"
+                if (data.rstrip()[-1] == "~"):
+                  data = data.rstrip()[:-1] + "\r"
+                self.result_text.insert("end",data)
+                self.result_text.yview(END)
+
+
             self.result_text.configure(state=DISABLED)
         print "Disconnected from server"
 
@@ -144,10 +162,15 @@ class ChatClientGUI(Frame):
         if ":" not in self.msg.get():
             message = self.msg.get()
             if (len(message) % 2 != 0):
-                message += "~" 
-            message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
+                message += "~"
+            if self.broadcastmode == 1:
+                print "Not encrypting message"
+                message = "["+ str(getpass.getuser()) + "] " + message + "\n"            
+            else:
+                print "encrypting message "
+                message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
         else:
-            message = self.msg.get() + "\n"
+            message = "["+ str(getpass.getuser()) + "] " + self.msg.get() + "\n"
         self.clientSocket.send(message)
         self.entry_box.delete(0, END)
 
