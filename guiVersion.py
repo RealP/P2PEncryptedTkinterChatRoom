@@ -1,5 +1,6 @@
 import socket, select, string, sys, thread
-import hashlib, getpass, datetime
+import hashlib, getpass, datetime, re
+
 try:
     from Tkinter import *  
 except:
@@ -131,9 +132,12 @@ class ChatClientGUI(Frame):
                   print "It may have been an ascii-encoded unicode string"
                   if (data.rstrip()[-1] == "~"):
                     data = data.rstrip()[:-1] + "\r"
-                  self.result_text.insert("end",data)
-                  self.result_text.yview(END)
-
+                  if (re.search("\[.*\].*", data)):
+                      self.result_text.insert("end",data)
+                      self.result_text.yview(END)
+                  else:
+                    print "Data not in proper format data ", data 
+                
             except KeyboardInterrupt:
                 break     
             except socket.timeout:
@@ -144,14 +148,12 @@ class ChatClientGUI(Frame):
                     data = data.rstrip()[:-1] + "\r"
                 self.result_text.insert("end",data)
                 self.result_text.yview(END)
-
             except ValueError: # Text is not encrypted
-                print "Error on the decipghering of text"
+                print "Error on the deciphering of text"
                 if (data.rstrip()[-1] == "~"):
                   data = data.rstrip()[:-1] + "\r"
                 self.result_text.insert("end",data)
                 self.result_text.yview(END)
-
 
             self.result_text.configure(state=DISABLED)
         print "Disconnected from server"
