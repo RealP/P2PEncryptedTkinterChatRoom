@@ -90,7 +90,23 @@ class ChatClientGUI(Frame):
         self.lockImage   = PhotoImage(file="lock.gif")
         self.imageLabel  = Label(self.frame, image = self.unlockImage)
         self.imageLabel.grid(row=4, column=0)
-
+    def highlight(self, args):
+        idx = '1.0'
+        self.result_text.tag_remove('found', '1.0', END)
+        if args=="":
+            return
+        while 1:
+            # find next occurrence, exit loop if no more
+            idx = self.result_text.search(args, idx, nocase=1, stopindex=END, regexp=True)
+            if not idx: break
+            # index right after the end of the occurrence
+            lastidx = '%s+%dc' % (idx, len(args))
+            # tag the whole occurrence (start included, stop excluded)
+            self.result_text.tag_add('found', idx, lastidx)
+            # prepare to search for next occurrence
+            idx = lastidx
+        # use a red foreground/yellowbackground for all the tagged occurrences
+        self.result_text.tag_config('found', foreground='blue')
 
     def setKey(self, secretKey):
         if (secretKey.get() == "broadcast"):
@@ -184,6 +200,7 @@ class ChatClientGUI(Frame):
         #Provides the needed self feedback
         self.result_text.configure(state=NORMAL)
         self.result_text.insert("end", "[You] " + self.msg.get() + "\n")
+        self.highlight(r"\[You\].*\r?|\w+(?:\s|$)")
         self.result_text.yview(END)
         self.result_text.configure(state=DISABLED)
 
