@@ -39,7 +39,7 @@ class ChatClientGUI(Frame):
         self.root = Tk()
         self.root.geometry("410x570")
         self.root.title("Chat Program")
-        self.root.resizable(width=False, height=False)
+        # self.root.resizable(width=False, height=False)
         self.root.configure(background='gray')
         Frame.__init__(self, self.root)
         self.frame = Frame(self.root)
