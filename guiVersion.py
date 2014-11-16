@@ -1,5 +1,6 @@
 import socket, select, string, sys, thread
 import hashlib, getpass, datetime, re
+# import ImageTk, Image
 
 try:
     from Tkinter import *  
@@ -53,6 +54,7 @@ class ChatClientGUI(Frame):
         self.chatRoomTextBoxInit()
         self.sendButtonInit()
         self.encryptionKeyInit()
+        self.iconInit()
         self.connectToServer()
 
     def chatRoomWindowInit(self):
@@ -83,12 +85,20 @@ class ChatClientGUI(Frame):
 
         self.setKeyButton = Button(self.frame, text="Set", command=lambda: self.setKey(self.encryptionKey))
         self.setKeyButton.grid(row=3, column=0, sticky=E)
+    def iconInit(self):
+        self.unlockImage = PhotoImage(file="unlock.gif")
+        self.lockImage   = PhotoImage(file="lock.gif")
+        self.imageLabel  = Label(self.frame, image = self.unlockImage)
+        self.imageLabel.grid(row=4, column=0)
+
 
     def setKey(self, secretKey):
         if (secretKey.get() == "broadcast"):
             self.broadcastmode = 1
+            self.imageLabel.configure(image=self.unlockImage)
         else:
             self.broadcastmode = 0
+            self.imageLabel.configure(image=self.lockImage)
         self.key=hashlib.sha256(secretKey.get()).digest()
         self.encryptionKeyBox.delete(0, END)
         # print self.broadcastmode
