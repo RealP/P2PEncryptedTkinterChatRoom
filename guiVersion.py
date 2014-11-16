@@ -117,7 +117,7 @@ class ChatClientGUI(Frame):
               data = self.clientSocket.recv(4096)
               if not data:
                   break
-              # self.result_text.configure(state=NORMAL)
+              self.result_text.configure(state=NORMAL)
               if self.broadcastmode == 0:
                   print "compressed cipher text = ", data
                   data = decrypt_val_and_unzip(data, self.key)
@@ -153,7 +153,7 @@ class ChatClientGUI(Frame):
                 self.result_text.yview(END)
 
 
-            # self.result_text.configure(state=DISABLED)
+            self.result_text.configure(state=DISABLED)
         print "Disconnected from server"
 
     def processSendButton(self, *args):
