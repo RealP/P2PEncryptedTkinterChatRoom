@@ -171,6 +171,12 @@ class ChatClientGUI(Frame):
                 message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
         else:
             message = "["+ str(getpass.getuser()) + "] " + self.msg.get() + "\n"
+        #Provides the needed self feedback
+        self.result_text.configure(state=NORMAL)
+        self.result_text.insert("end", "[You] " + self.msg.get() + "\n")
+        self.result_text.yview(END)
+        self.result_text.configure(state=DISABLED)
+
         self.clientSocket.send(message)
         self.entry_box.delete(0, END)
 
