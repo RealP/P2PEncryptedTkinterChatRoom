@@ -26,13 +26,13 @@ def zip_and_encrypt_val(clear_text, key):
     return cipher_text
 
 def decrypt_val_and_unzip(cipher_text, key):
-    print "Staring decryption"
+    # print "Staring decryption"
     dec_secret = AES.new(key[:32])
     cipher_text += "=" * ((4 - len(cipher_text) % 4) % 4)
     raw_decrypted = dec_secret.decrypt(base64.b64decode(cipher_text))
     clear_val = raw_decrypted.rstrip("\0")
     # clear_val = bz2.decompress(clear_val)
-    print "Done decryption"
+    # print "Done decryption"
     return clear_val
 
 class ChatClientGUI(Frame):
@@ -91,7 +91,7 @@ class ChatClientGUI(Frame):
             self.broadcastmode = 0
         self.key=hashlib.sha256(secretKey.get()).digest()
         self.encryptionKeyBox.delete(0, END)
-        print self.broadcastmode
+        # print self.broadcastmode
 
     def connectToServer(self):
         if(len(sys.argv) < 3) :
@@ -126,18 +126,16 @@ class ChatClientGUI(Frame):
               try:
                   data.decode('ascii')
               except UnicodeDecodeError:
-                  # print "it was not a ascii-encoded unicode string"
+                  print "it was not a ascii-encoded unicode string"
                   pass
               else:
-                  print "It may have been an ascii-encoded unicode string"
                   if (data.rstrip()[-1] == "~"):
                     data = data.rstrip()[:-1] + "\r"
                   if (re.search("\[.*\].*", data)):
                       self.result_text.insert("end",data)
                       self.result_text.yview(END)
                   else:
-                    print "Data not in proper format data ", data 
-                
+                    print "Data not in proper format data ", data               
             except KeyboardInterrupt:
                 break     
             except socket.timeout:
@@ -166,10 +164,10 @@ class ChatClientGUI(Frame):
             if (len(message) % 2 != 0):
                 message += "~"
             if self.broadcastmode == 1:
-                print "Not encrypting message"
                 message = "["+ str(getpass.getuser()) + "] " + message + "\n"            
+                print "Your in broadcast mode so not encrypting message --> ", message
             else:
-                print "encrypting message "
+                print "encrypting message -->", "["+ str(getpass.getuser()) + "] " + message
                 message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
         else:
             message = "["+ str(getpass.getuser()) + "] " + self.msg.get() + "\n"
