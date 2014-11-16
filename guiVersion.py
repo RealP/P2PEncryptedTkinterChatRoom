@@ -37,7 +37,7 @@ def decrypt_val_and_unzip(cipher_text, key):
 class ChatClientGUI(Frame):
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("310x470")
+        self.root.geometry("410x570")
         self.root.title("Chat Program")
         self.root.resizable(width=False, height=False)
         self.root.configure(background='gray')
