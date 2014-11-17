@@ -110,7 +110,7 @@ class ChatClientGUI(Frame):
         self.unlockImage = PhotoImage(file="unlock.gif")
         self.lockImage   = PhotoImage(file="lock.gif")
         self.imageLabel  = Label(self.frame, image = self.unlockImage)
-        self.imageLabel.grid(row=4, column=0)
+        self.imageLabel.grid(row=4, column=0, sticky=W)
 
     ## Searches text box for the regex provided and highlight all matches to have blue text 
     # We can end up using this for more than just highlighting the user messages. We can make
@@ -213,6 +213,8 @@ class ChatClientGUI(Frame):
                   data = data.rstrip()[:-1] + "\r"
                 self.result_text.insert("end",data)
                 self.result_text.yview(END)
+            except:
+                break
 
             # self.result_text.configure(state=DISABLED)
         print "Disconnected from server"

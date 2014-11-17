@@ -20,10 +20,14 @@ class F:
         old_f.write(x.replace("\n", " [%s]\n" % str(datetime.datetime.now())))
 sys.stdout = F()
 
-def processClientCommands(cmd, clientSocket):
-    if "crea:" in cmd:
-        print "Client want a new room"
-    else:
+def processClientCommands(cmd, clientSocket):                                                                                                
+    if "unsu:" in cmd:                                                                                                                       
+        print "Client leaving room"                                                                                                       
+        clientSocket.send("Leaving room :(")
+        SOCKET_LIST = SOCKET_LIST.remove(clientSocket)
+    if "crea:" in cmd:                                                                                                                       
+        print "Client want a new room"                                                                                                       
+    else:                                                                                                                                    
         sendResponseFromServer("Command not implemented :(\n", clientSocket)
 
 def sendResponseFromServer(response, userSocket):
@@ -35,15 +39,15 @@ def clientMessage(clientSoc, clientAddr, serverSocket):
             data = clientSoc.recv(4096)
             if not data:
                 break
-            ### SEARCH FOR ONE OF THE POSSIBLE COMMANDS FROM THE USER. 
-            ### AND PROCESS IT AS APPROPRIATE
+            ## SEARCH FOR ONE OF THE POSSIBLE COMMANDS FROM THE USER. 
+            # AND PROCESS IT AS APPROPRIATE
             for cmd in POSSIBLE_COMMANDS:
                 m = re.search(cmd+":.*;", data)
                 if m:
                     processClientCommands(data, clientSoc)
                     break
             broadcast(serverSocket, clientSoc, data)  
-        except socket.timeout:
+        except:
             break
     SOCKET_LIST.remove(clientSoc)
     broadcast(serverSocket, clientSoc, "Client (%s, %s) is offline\n" % clientAddr)
