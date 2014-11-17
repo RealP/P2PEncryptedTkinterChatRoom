@@ -4,25 +4,25 @@
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classgui_version_1_1_chat_client_g_u_i}{Chat\+Client\+G\+U\+I}
-\item 
+\begin{DoxyCompactList}\small\item\em The Main class has all the methods used by the gui. \end{DoxyCompactList}\item 
 class \hyperlink{classgui_version_1_1_f}{F}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Monkey Patch stdout so the print statement has the timestamp appended to it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{namespacegui_version_ae8a9c77879e18f58a45597b28e21042b}{zip\+\_\+and\+\_\+encrypt\+\_\+val} (clear\+\_\+text, key)
-\item 
+\begin{DoxyCompactList}\small\item\em Function that encrypts your string. \end{DoxyCompactList}\item 
 def \hyperlink{namespacegui_version_a2925a99a40df97be6ae16f1a22184b24}{decrypt\+\_\+val\+\_\+and\+\_\+unzip} (cipher\+\_\+text, key)
-\item 
+\begin{DoxyCompactList}\small\item\em Function that decrypts an encypted string. \end{DoxyCompactList}\item 
 def \hyperlink{namespacegui_version_a79d3b927a5ac9c40a255afc12ebfa5bb}{main} ()
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 tuple \hyperlink{namespacegui_version_ad80b491a9fbc91c221e73a124bff5d05}{M\+A\+S\+T\+E\+R\+\_\+\+K\+E\+Y} = hashlib.\+sha256(\char`\"{}Some-\/long-\/base-\/key-\/to-\/use-\/as-\/encyrption-\/key\char`\"{})
-\begin{DoxyCompactList}\small\item\em somethings wrong when the message number of characters!!! \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em somethings wrong when the K\+E\+Y I\+S 256bytes so im hasing it into a 256 byte string \end{DoxyCompactList}\item 
 \hyperlink{namespacegui_version_a77c635f5f5d51002c89931af7228063c}{old\+\_\+f} = sys.\+stdout
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Keep a reference of the old stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -36,7 +36,18 @@ tuple \hyperlink{namespacegui_version_ad80b491a9fbc91c221e73a124bff5d05}{M\+A\+S
 )}\label{namespacegui_version_a2925a99a40df97be6ae16f1a22184b24}
 
 
-Definition at line 29 of file gui\+Version.\+py.
+Function that decrypts an encypted string. 
+
+it doesnt decompress it.. caused errors 
+\begin{DoxyParams}{Parameters}
+{\em clear\+\_\+text} & The unencypted text that you want to encrypt \\
+\hline
+{\em key} & The key you want to encrypt the clear text with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 39 of file gui\+Version.\+py.
 
 \hypertarget{namespacegui_version_a79d3b927a5ac9c40a255afc12ebfa5bb}{}\index{gui\+Version@{gui\+Version}!main@{main}}
 \index{main@{main}!gui\+Version@{gui\+Version}}
@@ -47,7 +58,7 @@ Definition at line 29 of file gui\+Version.\+py.
 )}\label{namespacegui_version_a79d3b927a5ac9c40a255afc12ebfa5bb}
 
 
-Definition at line 215 of file gui\+Version.\+py.
+Definition at line 246 of file gui\+Version.\+py.
 
 \hypertarget{namespacegui_version_ae8a9c77879e18f58a45597b28e21042b}{}\index{gui\+Version@{gui\+Version}!zip\+\_\+and\+\_\+encrypt\+\_\+val@{zip\+\_\+and\+\_\+encrypt\+\_\+val}}
 \index{zip\+\_\+and\+\_\+encrypt\+\_\+val@{zip\+\_\+and\+\_\+encrypt\+\_\+val}!gui\+Version@{gui\+Version}}
@@ -59,7 +70,18 @@ Definition at line 215 of file gui\+Version.\+py.
 )}\label{namespacegui_version_ae8a9c77879e18f58a45597b28e21042b}
 
 
-Definition at line 20 of file gui\+Version.\+py.
+Function that encrypts your string. 
+
+it doesnt compress it since i had errors decompressing 
+\begin{DoxyParams}{Parameters}
+{\em clear\+\_\+text} & The unencypted text that you want to encrypt \\
+\hline
+{\em key} & The key you want to encrypt the clear text with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file gui\+Version.\+py.
 
 
 
@@ -69,16 +91,20 @@ Definition at line 20 of file gui\+Version.\+py.
 \subsubsection[{M\+A\+S\+T\+E\+R\+\_\+\+K\+E\+Y}]{\setlength{\rightskip}{0pt plus 5cm}tuple gui\+Version.\+M\+A\+S\+T\+E\+R\+\_\+\+K\+E\+Y = hashlib.\+sha256(\char`\"{}Some-\/long-\/base-\/key-\/to-\/use-\/as-\/encyrption-\/key\char`\"{})}\label{namespacegui_version_ad80b491a9fbc91c221e73a124bff5d05}
 
 
-somethings wrong when the message number of characters!!! 
+somethings wrong when the K\+E\+Y I\+S 256bytes so im hasing it into a 256 byte string 
 
 
 
-Definition at line 12 of file gui\+Version.\+py.
+Definition at line 11 of file gui\+Version.\+py.
 
 \hypertarget{namespacegui_version_a77c635f5f5d51002c89931af7228063c}{}\index{gui\+Version@{gui\+Version}!old\+\_\+f@{old\+\_\+f}}
 \index{old\+\_\+f@{old\+\_\+f}!gui\+Version@{gui\+Version}}
 \subsubsection[{old\+\_\+f}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+old\+\_\+f = sys.\+stdout}\label{namespacegui_version_a77c635f5f5d51002c89931af7228063c}
 
 
-Definition at line 14 of file gui\+Version.\+py.
+Keep a reference of the old stdout. 
+
+
+
+Definition at line 13 of file gui\+Version.\+py.
 

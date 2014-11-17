@@ -1,5 +1,10 @@
 \hypertarget{classgui_version_1_1_chat_client_g_u_i}{}\section{gui\+Version.\+Chat\+Client\+G\+U\+I Class Reference}
 \label{classgui_version_1_1_chat_client_g_u_i}\index{gui\+Version.\+Chat\+Client\+G\+U\+I@{gui\+Version.\+Chat\+Client\+G\+U\+I}}
+
+
+The Main class has all the methods used by the gui.  
+
+
 Inheritance diagram for gui\+Version.\+Chat\+Client\+G\+U\+I\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,27 +17,27 @@ Inheritance diagram for gui\+Version.\+Chat\+Client\+G\+U\+I\+:\begin{figure}[H]
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_ae6788c5b8f15cd3ac7a844cee72e06a3}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
 \item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a768dd49f34840a662bc12636dcb8f18a}{chat\+Room\+Window\+Init} (self)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates the textbox that the messages go into. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a1788a126553ae97447343bd9f4187624}{chat\+Room\+Text\+Box\+Init} (self)
-\item 
+\begin{DoxyCompactList}\small\item\em Create the entry widget that user types messages into. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_ad5e98841e008476eee6015e5b8bf6eee}{send\+Button\+Init} (self)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates the send button that sends the message The meesage is also binded to send with the pressing of the return key. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a16414e83201878b6a1565fdf0600f15a}{encryption\+Key\+Init} (self)
-\item 
+\begin{DoxyCompactList}\small\item\em Create the entry widget that user types their encryption key into. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_acb99a090317b6806b24e91ef4ac4b0e2}{icon\+Init} (self)
 \item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_ac68b416d5a4d4962b76752f1aa78bccb}{highlight} (self, args)
-\item 
+\begin{DoxyCompactList}\small\item\em Searches text box for the regex provided and highlight all matches to have blue text We can end up using this for more than just highlighting the user messages. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_ad0b24322eeb5217d9410ee68fb054d42}{set\+Key} (self, secret\+Key)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the users secret key, change image based on key,. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a976bddea0e9e23dd9e2245aa002a354f}{connect\+To\+Server} (self)
 \item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a8de44a4f22866fe79ee14d0536120fa4}{get\+Message\+Thread} (self, \hyperlink{classgui_version_1_1_chat_client_g_u_i_ad0d119fff1856994d498e1e9861451d5}{client\+Socket}, host)
-\item 
+\begin{DoxyCompactList}\small\item\em This is where the magic happens a thread reads from the specified port constantly if there is data it continues by processing it, (decrypt, strip padding, catch errors The danger here is I am modifying the app from a thread that is not the main thread. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_afbeef14d848917e111de1d91e325662c}{process\+Send\+Button} (self, args)
 \begin{DoxyCompactList}\small\item\em Gets called on enter press or send button This is where we decide to compress the cmds sent to server. \end{DoxyCompactList}\item 
 def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a0211f17468f8c004ca4d22dec90f6e5f}{start} (self)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Just a way of starting the main loop inside the class I think this little hack allows us to modify from non-\/main threads. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,9 +48,9 @@ def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a0211f17468f8c004ca4d22dec
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_afe7983bc0c4a2f71030e992caca57b43}{key}
 \item 
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_a24c3049b3a6f498d56685eef5405baf6}{broadcastmode}
-\begin{DoxyCompactList}\small\item\em encrypt all messages without colon \end{DoxyCompactList}\item 
+\item 
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_aed7ce16822dd2da856987bb7dbca00f7}{result\+\_\+text}
-\begin{DoxyCompactList}\small\item\em C. \end{DoxyCompactList}\item 
+\item 
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_a44a52021282a7dc6c04aa10b77d829e9}{msg}
 \item 
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_a4436c621e5f3c806218c2756edf488f7}{entry\+\_\+box}
@@ -67,13 +72,13 @@ def \hyperlink{classgui_version_1_1_chat_client_g_u_i_a0211f17468f8c004ca4d22dec
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_adc513d1ee47a0582c35cc426cd582f1d}{image\+Label}
 \item 
 \hyperlink{classgui_version_1_1_chat_client_g_u_i_ad0d119fff1856994d498e1e9861451d5}{client\+Socket}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em client socket is an object from the socket class that can recieve data over the web \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+The Main class has all the methods used by the gui. 
 
-
-Definition at line 39 of file gui\+Version.\+py.
+Definition at line 49 of file gui\+Version.\+py.
 
 
 
@@ -87,7 +92,7 @@ Definition at line 39 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_ae6788c5b8f15cd3ac7a844cee72e06a3}
 
 
-Definition at line 40 of file gui\+Version.\+py.
+Definition at line 50 of file gui\+Version.\+py.
 
 
 
@@ -101,7 +106,11 @@ Definition at line 40 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a1788a126553ae97447343bd9f4187624}
 
 
-Definition at line 66 of file gui\+Version.\+py.
+Create the entry widget that user types messages into. 
+
+
+
+Definition at line 77 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a768dd49f34840a662bc12636dcb8f18a}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!chat\+Room\+Window\+Init@{chat\+Room\+Window\+Init}}
 \index{chat\+Room\+Window\+Init@{chat\+Room\+Window\+Init}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -112,7 +121,11 @@ Definition at line 66 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a768dd49f34840a662bc12636dcb8f18a}
 
 
-Definition at line 60 of file gui\+Version.\+py.
+Creates the textbox that the messages go into. 
+
+
+
+Definition at line 71 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a976bddea0e9e23dd9e2245aa002a354f}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!connect\+To\+Server@{connect\+To\+Server}}
 \index{connect\+To\+Server@{connect\+To\+Server}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -123,7 +136,7 @@ Definition at line 60 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a976bddea0e9e23dd9e2245aa002a354f}
 
 
-Definition at line 123 of file gui\+Version.\+py.
+Definition at line 144 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a16414e83201878b6a1565fdf0600f15a}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!encryption\+Key\+Init@{encryption\+Key\+Init}}
 \index{encryption\+Key\+Init@{encryption\+Key\+Init}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -134,7 +147,11 @@ Definition at line 123 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a16414e83201878b6a1565fdf0600f15a}
 
 
-Definition at line 79 of file gui\+Version.\+py.
+Create the entry widget that user types their encryption key into. 
+
+
+
+Definition at line 93 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a8de44a4f22866fe79ee14d0536120fa4}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!get\+Message\+Thread@{get\+Message\+Thread}}
 \index{get\+Message\+Thread@{get\+Message\+Thread}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -147,7 +164,18 @@ Definition at line 79 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a8de44a4f22866fe79ee14d0536120fa4}
 
 
-Definition at line 141 of file gui\+Version.\+py.
+This is where the magic happens a thread reads from the specified port constantly if there is data it continues by processing it, (decrypt, strip padding, catch errors The danger here is I am modifying the app from a thread that is not the main thread. 
+
+This is supposed to not work since tkinter isn't thread safe but no problems yet 
+\begin{DoxyParams}{Parameters}
+{\em client\+Socket} & An instance on the socket (N\+O\+T U\+S\+E\+D since its global....) \\
+\hline
+{\em host} & The host address (Also not used.. we can get rid of these) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 169 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_ac68b416d5a4d4962b76752f1aa78bccb}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!highlight@{highlight}}
 \index{highlight@{highlight}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -159,7 +187,16 @@ Definition at line 141 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_ac68b416d5a4d4962b76752f1aa78bccb}
 
 
-Definition at line 94 of file gui\+Version.\+py.
+Searches text box for the regex provided and highlight all matches to have blue text We can end up using this for more than just highlighting the user messages. 
+
+We can make search box... etc 
+\begin{DoxyParams}{Parameters}
+{\em args} & The regular expression you wish to search for... \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 113 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_acb99a090317b6806b24e91ef4ac4b0e2}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!icon\+Init@{icon\+Init}}
 \index{icon\+Init@{icon\+Init}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -170,7 +207,7 @@ Definition at line 94 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_acb99a090317b6806b24e91ef4ac4b0e2}
 
 
-Definition at line 89 of file gui\+Version.\+py.
+Definition at line 103 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_afbeef14d848917e111de1d91e325662c}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!process\+Send\+Button@{process\+Send\+Button}}
 \index{process\+Send\+Button@{process\+Send\+Button}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -186,7 +223,7 @@ Gets called on enter press or send button This is where we decide to compress th
 
 
 
-Definition at line 188 of file gui\+Version.\+py.
+Definition at line 216 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_ad5e98841e008476eee6015e5b8bf6eee}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!send\+Button\+Init@{send\+Button\+Init}}
 \index{send\+Button\+Init@{send\+Button\+Init}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -197,7 +234,11 @@ Definition at line 188 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_ad5e98841e008476eee6015e5b8bf6eee}
 
 
-Definition at line 73 of file gui\+Version.\+py.
+Creates the send button that sends the message The meesage is also binded to send with the pressing of the return key. 
+
+
+
+Definition at line 86 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_ad0b24322eeb5217d9410ee68fb054d42}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!set\+Key@{set\+Key}}
 \index{set\+Key@{set\+Key}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -209,7 +250,16 @@ Definition at line 73 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_ad0b24322eeb5217d9410ee68fb054d42}
 
 
-Definition at line 113 of file gui\+Version.\+py.
+Set the users secret key, change image based on key,. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em secret\+Key} & The secret key chosen by user \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 134 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a0211f17468f8c004ca4d22dec90f6e5f}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!start@{start}}
 \index{start@{start}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
@@ -220,7 +270,16 @@ Definition at line 113 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_chat_client_g_u_i_a0211f17468f8c004ca4d22dec90f6e5f}
 
 
-Definition at line 212 of file gui\+Version.\+py.
+Just a way of starting the main loop inside the class I think this little hack allows us to modify from non-\/main threads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Instance of class \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 243 of file gui\+Version.\+py.
 
 
 
@@ -230,120 +289,116 @@ Definition at line 212 of file gui\+Version.\+py.
 \subsubsection[{broadcastmode}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+broadcastmode}\label{classgui_version_1_1_chat_client_g_u_i_a24c3049b3a6f498d56685eef5405baf6}
 
 
-encrypt all messages without colon 
-
-
-
-Definition at line 52 of file gui\+Version.\+py.
+Definition at line 62 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_ad0d119fff1856994d498e1e9861451d5}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!client\+Socket@{client\+Socket}}
 \index{client\+Socket@{client\+Socket}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{client\+Socket}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+client\+Socket}\label{classgui_version_1_1_chat_client_g_u_i_ad0d119fff1856994d498e1e9861451d5}
 
 
-Definition at line 130 of file gui\+Version.\+py.
+client socket is an object from the socket class that can recieve data over the web 
+
+
+
+Definition at line 152 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_aafa39a201580f18372e0911d9667ccbd}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!encryption\+Key@{encryption\+Key}}
 \index{encryption\+Key@{encryption\+Key}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{encryption\+Key}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+encryption\+Key}\label{classgui_version_1_1_chat_client_g_u_i_aafa39a201580f18372e0911d9667ccbd}
 
 
-Definition at line 83 of file gui\+Version.\+py.
+Definition at line 97 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a61e070d785a0e8308bf1a26788075258}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!encryption\+Key\+Box@{encryption\+Key\+Box}}
 \index{encryption\+Key\+Box@{encryption\+Key\+Box}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{encryption\+Key\+Box}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+encryption\+Key\+Box}\label{classgui_version_1_1_chat_client_g_u_i_a61e070d785a0e8308bf1a26788075258}
 
 
-Definition at line 84 of file gui\+Version.\+py.
+Definition at line 98 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a4436c621e5f3c806218c2756edf488f7}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!entry\+\_\+box@{entry\+\_\+box}}
 \index{entry\+\_\+box@{entry\+\_\+box}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{entry\+\_\+box}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+entry\+\_\+box}\label{classgui_version_1_1_chat_client_g_u_i_a4436c621e5f3c806218c2756edf488f7}
 
 
-Definition at line 68 of file gui\+Version.\+py.
+Definition at line 79 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a7809572437bc7888072cb612990da273}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!frame@{frame}}
 \index{frame@{frame}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{frame}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+frame}\label{classgui_version_1_1_chat_client_g_u_i_a7809572437bc7888072cb612990da273}
 
 
-Definition at line 47 of file gui\+Version.\+py.
+Definition at line 57 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a5a09ecaf8a2c39309f7b7acdea272bc5}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!go\+Button@{go\+Button}}
 \index{go\+Button@{go\+Button}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{go\+Button}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+go\+Button}\label{classgui_version_1_1_chat_client_g_u_i_a5a09ecaf8a2c39309f7b7acdea272bc5}
 
 
-Definition at line 74 of file gui\+Version.\+py.
+Definition at line 87 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_adc513d1ee47a0582c35cc426cd582f1d}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!image\+Label@{image\+Label}}
 \index{image\+Label@{image\+Label}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{image\+Label}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+image\+Label}\label{classgui_version_1_1_chat_client_g_u_i_adc513d1ee47a0582c35cc426cd582f1d}
 
 
-Definition at line 92 of file gui\+Version.\+py.
+Definition at line 106 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_afe7983bc0c4a2f71030e992caca57b43}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!key@{key}}
 \index{key@{key}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+key}\label{classgui_version_1_1_chat_client_g_u_i_afe7983bc0c4a2f71030e992caca57b43}
 
 
-Definition at line 51 of file gui\+Version.\+py.
+Definition at line 61 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a5af88dbf7d3768e3b2b3d085c4560345}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!key\+Label@{key\+Label}}
 \index{key\+Label@{key\+Label}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{key\+Label}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+key\+Label}\label{classgui_version_1_1_chat_client_g_u_i_a5af88dbf7d3768e3b2b3d085c4560345}
 
 
-Definition at line 80 of file gui\+Version.\+py.
+Definition at line 94 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_af4e157319d9a46549b533d5718e8d114}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!lock\+Image@{lock\+Image}}
 \index{lock\+Image@{lock\+Image}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{lock\+Image}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+lock\+Image}\label{classgui_version_1_1_chat_client_g_u_i_af4e157319d9a46549b533d5718e8d114}
 
 
-Definition at line 91 of file gui\+Version.\+py.
+Definition at line 105 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a44a52021282a7dc6c04aa10b77d829e9}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!msg@{msg}}
 \index{msg@{msg}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{msg}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+msg}\label{classgui_version_1_1_chat_client_g_u_i_a44a52021282a7dc6c04aa10b77d829e9}
 
 
-Definition at line 67 of file gui\+Version.\+py.
+Definition at line 78 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_aed7ce16822dd2da856987bb7dbca00f7}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!result\+\_\+text@{result\+\_\+text}}
 \index{result\+\_\+text@{result\+\_\+text}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{result\+\_\+text}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+result\+\_\+text}\label{classgui_version_1_1_chat_client_g_u_i_aed7ce16822dd2da856987bb7dbca00f7}
 
 
-C. 
-
-
-
-Definition at line 62 of file gui\+Version.\+py.
+Definition at line 72 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_afec7497b20c1d133c5c026c9625a1691}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!root@{root}}
 \index{root@{root}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+root}\label{classgui_version_1_1_chat_client_g_u_i_afec7497b20c1d133c5c026c9625a1691}
 
 
-Definition at line 41 of file gui\+Version.\+py.
+Definition at line 51 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_a6f8fa5385bc6fa43fe07f02151b54dac}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!set\+Key\+Button@{set\+Key\+Button}}
 \index{set\+Key\+Button@{set\+Key\+Button}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{set\+Key\+Button}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+set\+Key\+Button}\label{classgui_version_1_1_chat_client_g_u_i_a6f8fa5385bc6fa43fe07f02151b54dac}
 
 
-Definition at line 87 of file gui\+Version.\+py.
+Definition at line 101 of file gui\+Version.\+py.
 
 \hypertarget{classgui_version_1_1_chat_client_g_u_i_ac9bcddaa82b6d786fa50638f18fd814b}{}\index{gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}!unlock\+Image@{unlock\+Image}}
 \index{unlock\+Image@{unlock\+Image}!gui\+Version\+::\+Chat\+Client\+G\+U\+I@{gui\+Version\+::\+Chat\+Client\+G\+U\+I}}
 \subsubsection[{unlock\+Image}]{\setlength{\rightskip}{0pt plus 5cm}gui\+Version.\+Chat\+Client\+G\+U\+I.\+unlock\+Image}\label{classgui_version_1_1_chat_client_g_u_i_ac9bcddaa82b6d786fa50638f18fd814b}
 
 
-Definition at line 90 of file gui\+Version.\+py.
+Definition at line 104 of file gui\+Version.\+py.
 
 
 

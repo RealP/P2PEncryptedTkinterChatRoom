@@ -95,15 +95,20 @@ $(document).ready(function(){initNavTree('classgui_version_1_1_f.html','');});
 <div class="title">guiVersion.F Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Monkey Patch stdout so the print statement has the timestamp appended to it.  
+ <a href="classgui_version_1_1_f.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af69510b5ace8bf9db1194a0bd546aea6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui_version_1_1_f.html#af69510b5ace8bf9db1194a0bd546aea6">write</a> (self, x)</td></tr>
+<tr class="memdesc:af69510b5ace8bf9db1194a0bd546aea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that gets called when you call print to stdout.  <a href="#af69510b5ace8bf9db1194a0bd546aea6">More...</a><br /></td></tr>
 <tr class="separator:af69510b5ace8bf9db1194a0bd546aea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="gui_version_8py_source.html#l00015">15</a> of file <a class="el" href="gui_version_8py_source.html">guiVersion.py</a>.</p>
+<div class="textblock"><p>Monkey Patch stdout so the print statement has the timestamp appended to it. </p>
+
+<p>Definition at line <a class="el" href="gui_version_8py_source.html#l00016">16</a> of file <a class="el" href="gui_version_8py_source.html">guiVersion.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="af69510b5ace8bf9db1194a0bd546aea6"></a>
 <div class="memitem">
@@ -129,7 +134,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gui_version_8py_source.html#l00016">16</a> of file <a class="el" href="gui_version_8py_source.html">guiVersion.py</a>.</p>
+<p>Function that gets called when you call print to stdout. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>A reference to a our new stdout </td></tr>
+    <tr><td class="paramname">x</td><td>The message you sent to print statement </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="gui_version_8py_source.html#l00020">20</a> of file <a class="el" href="gui_version_8py_source.html">guiVersion.py</a>.</p>
 
 </div>
 </div>
@@ -142,7 +156,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegui_version.html">guiVersion</a></li><li class="navelem"><a class="el" href="classgui_version_1_1_f.html">F</a></li>
-    <li class="footer">Generated on Sun Nov 16 2014 20:08:31 for P2PEncryptedTkinterApp by
+    <li class="footer">Generated on Sun Nov 16 2014 20:56:50 for P2PEncryptedTkinterApp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

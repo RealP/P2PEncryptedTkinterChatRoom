@@ -1,16 +1,21 @@
 \hypertarget{classgui_version_1_1_f}{}\section{gui\+Version.\+F Class Reference}
 \label{classgui_version_1_1_f}\index{gui\+Version.\+F@{gui\+Version.\+F}}
+
+
+Monkey Patch stdout so the print statement has the timestamp appended to it.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classgui_version_1_1_f_af69510b5ace8bf9db1194a0bd546aea6}{write} (self, x)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function that gets called when you call print to stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+Monkey Patch stdout so the print statement has the timestamp appended to it. 
 
-
-Definition at line 15 of file gui\+Version.\+py.
+Definition at line 16 of file gui\+Version.\+py.
 
 
 
@@ -25,7 +30,18 @@ Definition at line 15 of file gui\+Version.\+py.
 )}\label{classgui_version_1_1_f_af69510b5ace8bf9db1194a0bd546aea6}
 
 
-Definition at line 16 of file gui\+Version.\+py.
+Function that gets called when you call print to stdout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & A reference to a our new stdout \\
+\hline
+{\em x} & The message you sent to print statement \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 20 of file gui\+Version.\+py.
 
 
 
