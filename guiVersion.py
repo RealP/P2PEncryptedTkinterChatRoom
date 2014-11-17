@@ -48,16 +48,19 @@ def decrypt_val_and_unzip(cipher_text, key):
 #
 class ChatClientGUI(Frame):
     def __init__(self):
+        ## The root instance starts the tkinter main thread?
         self.root = Tk()
         self.root.geometry("410x570")
         self.root.title("Chat Program")
         # self.root.resizable(width=False, height=False)
         self.root.configure(background='gray')
         Frame.__init__(self, self.root)
+        ## Im not too sure why i do this all I know is now you use frame where people say to use root
         self.frame = Frame(self.root)
         self.frame.grid()
         self.frame.configure(background="gray")
         self.grid()
+        ## The key is set to the master key... lots of redunancy here that can be sorted out
         self.key = MASTER_KEY
         self.broadcastmode=1
         self.chatRoomWindowInit()
@@ -69,12 +72,15 @@ class ChatClientGUI(Frame):
 
     ## Creates the textbox that the messages go into
     def chatRoomWindowInit(self):
+        ## textbox for incoming messages
         self.result_text = Text(self.frame, height=25, width=48, font=('Arial', 12), bg="white")
         self.result_text.configure(state=DISABLED)
         self.result_text.grid(row=0, column=0, padx=(5,5), pady=(5,5), columnspan=1)
 
     ## Create the entry widget that user types messages into
     def chatRoomTextBoxInit(self):
+        ## some tkinter string var that hold the message the user is typing
+        # access it by using .get()
         self.msg = StringVar() 
         self.entry_box = Entry(self.frame, width=48, font=('Times', 12), bg="white", textvariable=self.msg)
         self.entry_box.grid(row=1, column=0, sticky=W, padx=(5,5), pady=(0,10), columnspan=1)
