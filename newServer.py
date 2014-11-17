@@ -81,4 +81,4 @@ def chat_server(host, port):
     server_socket.close()
 
 if __name__ == "__main__":
-    sys.exit(chat_server(HOST, PORT))         
+    sys.exit(chat_server(sys.argv[1], int(sys.argv[2])))        
