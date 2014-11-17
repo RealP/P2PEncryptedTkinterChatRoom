@@ -58,6 +58,7 @@ class ChatClientGUI(Frame):
         self.connectToServer()
 
     def chatRoomWindowInit(self):
+        ## C
         self.result_text = Text(self.frame, height=25, width=48, font=('Arial', 12), bg="white")
         self.result_text.configure(state=DISABLED)
         self.result_text.grid(row=0, column=0, padx=(5,5), pady=(5,5), columnspan=1)
@@ -118,7 +119,6 @@ class ChatClientGUI(Frame):
             self.imageLabel.configure(image=self.lockImage)
         self.key=hashlib.sha256(secretKey.get()).digest()
         self.encryptionKeyBox.delete(0, END)
-        # print self.broadcastmode
 
     def connectToServer(self):
         if(len(sys.argv) < 3) :
@@ -182,10 +182,11 @@ class ChatClientGUI(Frame):
 
             # self.result_text.configure(state=DISABLED)
         print "Disconnected from server"
-
+    
+    ## Gets called on enter press or send button
+    # This is where we decide to compress the cmds sent to server
     def processSendButton(self, *args):
-        ## Dont compress cmds sent to server
-        ## encrypt all messages without colon
+        ## encrypt all messages without colon        
         if ":" not in self.msg.get():
             message = self.msg.get()
             if (len(message) % 2 != 0):
@@ -198,13 +199,13 @@ class ChatClientGUI(Frame):
                 message = zip_and_encrypt_val("["+ str(getpass.getuser()) + "] " + message + "\n", self.key)
         else:
             message = "["+ str(getpass.getuser()) + "] " + self.msg.get() + "\n"
-        #Provides the needed self feedback
+        
+        ##Provides the needed self feedback
         self.result_text.configure(state=NORMAL)
         self.result_text.insert("end", "[You] " + self.msg.get() + "\n")
         self.highlight(r"\[You\].*")
         self.result_text.yview(END)
         # self.result_text.configure(state=DISABLED)
-
         self.clientSocket.send(message)
         self.entry_box.delete(0, END)
 
