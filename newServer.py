@@ -1,4 +1,4 @@
- 
+
 import sys
 import socket
 import select
@@ -85,4 +85,7 @@ def chat_server(host, port):
     server_socket.close()
 
 if __name__ == "__main__":
+    if (len(sys.argv) < 3):
+        print "Usage: python " + sys.argv[0] + " serverIp servertSocket"
+        sys.exit()
     sys.exit(chat_server(sys.argv[1], int(sys.argv[2])))        
