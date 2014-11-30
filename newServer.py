@@ -1,4 +1,3 @@
-
 import sys
 import socket
 import select
@@ -27,7 +26,7 @@ def processClientCommands(cmd, clientSocket):
         SOCKET_LIST = SOCKET_LIST.remove(clientSocket)
     if "crea:" in cmd:                                                                                                                       
         print "Client want a new room"                                                                                                       
-    else:                                                                                                                                    
+    else:                                                                                                                             
         sendResponseFromServer("Command not implemented :(\n", clientSocket)
 
 def sendResponseFromServer(response, userSocket):
@@ -49,8 +48,9 @@ def clientMessage(clientSoc, clientAddr, serverSocket):
             broadcast(serverSocket, clientSoc, data)  
         except:
             break
+    broadcast(serverSocket, None, "[%s, %s] is offline\n" % clientAddr)
+    print "Client (%s, %s) is offline\n" % clientAddr
     SOCKET_LIST.remove(clientSoc)
-    broadcast(serverSocket, clientSoc, "Client (%s, %s) is offline\n" % clientAddr)
     
 # broadcast chat messages to all connected clients
 def broadcast (server_socket, sock, message):
@@ -80,7 +80,7 @@ def chat_server(host, port):
         SOCKET_LIST.append(sockfd)
         print "Client (%s, %s) connected to main chat room" % addr
         sockfd.send("[%s:%s] entered main chat room\n" % addr)
-        # broadcast(server_socket, sockfd, "[%s:%s] entered main chat room\n" % addr)
+        broadcast(server_socket, sockfd, "[%s:%s] entered main chat room\n" % addr)
         thread.start_new_thread(clientMessage, (sockfd, addr, server_socket))
     server_socket.close()
 
