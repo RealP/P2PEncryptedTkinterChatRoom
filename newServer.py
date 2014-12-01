@@ -50,8 +50,10 @@ def clientMessage(clientSoc, clientAddr, serverSocket):
             break
     broadcast(serverSocket, None, "[%s, %s] is offline\n" % clientAddr)
     print "Client (%s, %s) is offline\n" % clientAddr
-    SOCKET_LIST.remove(clientSoc)
-    
+    try:
+        SOCKET_LIST.remove(clientSoc)
+    except:
+        pass
 # broadcast chat messages to all connected clients
 def broadcast (server_socket, sock, message):
     print "Called broadcast"
